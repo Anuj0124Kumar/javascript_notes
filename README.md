@@ -214,3 +214,208 @@ const curryUnaryFunction = (a) => (b) => (c) => a + b + c;
 curryUnaryFunction(1); // returns a function: b => c =>  1 + b + c
 curryUnaryFunction(1)(2); // returns a function: c => 3 + c
 curryUnaryFunction(1)(2)(3); // returns the number 6
+
+13 Pure function and impure function?
+ 
+ Pure functions return the same output if we use the same input parameters. However, impure functions give different outcomes when we pass the same arguments multiple times.
+
+const pureFunc = (x) =>{
+    return x+2;
+}
+
+const result = pureFunc(10);
+console.log(result);
+
+----impure func-----
+
+let x=20;
+
+const impureFunc =() =>{
+   console.log(x);
+   x+=2;
+}
+
+impureFunc();
+impureFunc();
+impureFunc();
+impureFunc();
+
+14 What is the purpose of the let keyword?
+
+  The let statement declares a block scope local variable. Hence the variables defined with let keyword are limited in scope to the block, statement, or expression on which it is used. Whereas variables declared with the var keyword used to define a variable globally, or locally to an entire function regardless of block scope.
+
+Let's take an example to demonstrate the usage,
+
+let age = 30;
+
+function printAge (){
+    let age = 32;// block scope
+    console.log(age);
+}
+
+printAge();
+console.log(age);
+
+difference with Var
+
+function userDetails(username) {
+  if (username) {
+    console.log(salary); // undefined due to hoisting
+    console.log(age); // ReferenceError: Cannot access 'age' before initialization
+    let age = 30;
+    var salary = 10000;
+  }
+  console.log(salary); //10000 (accessible to due function scope)
+  console.log(age); //error: age is not defined(due to block scope)
+}
+userDetails("John");
+
+   
+
+15 - What is the reason to choose the name let as a keyword?
+
+let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible.
+
+16-How do you redeclare variables in switch block without an ?
+
+//----------switch-----------
+
+// with error due to same scope
+
+function switchState(x) {
+
+    switch(x){
+        case 0:
+         let name;
+         break;
+
+        case 1:
+            let name;
+            break; 
+    }
+}
+// Without error 
+function switchState(x) {
+
+    switch(x){
+        case 0:
+         {
+            let name;
+           break;
+         }
+
+        case 1:
+            let name;
+            break; 
+    }
+}
+
+17-What is the Temporal Dead Zone?
+Temporal Dead Zone is the period of time during which the let and const declarations cannot be accessed.
+also state variable not reachable.
+
+console.log(age);//UND
+console.log(time);//Cannot access 'time' before initialization
+
+var age = 26;
+let time = 36;
+
+18 -What is IIFE(Immediately Invoked Function Expression)?
+
+    IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined. The signature of it would be as below,
+
+    (function () {
+    // logic here
+    })();
+
+19-How do you decode or encode a URL in JavaScript?
+
+    encodeURI() function is used to encode an URL. This function requires a URL string as a parameter and return that encoded string. decodeURI() function is used to decode an URL. This function requires an encoded URL string as parameter and return that decoded string.
+
+    Note: If you want to encode characters such as / ? : @ & = + $ # then you need to use encodeURIComponent().
+
+    let uri = "employeeDetails?name=john&occupation=manager";
+    let encoded_uri = encodeURI(uri);
+    let decoded_uri = decodeURI(encoded_uri);
+
+20-What is memoization?
+
+Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results. Each time a memoized function is called, its parameters are used to index the cache. If the data is present, then it can be returned, without executing the entire function. Otherwise the function is executed and then the result is added to the cache. Let's take an example of adding function with memoization.
+
+const memoAddition = () =>{
+   
+    let cache = {};
+     
+    return (value) =>{
+        if(value in cache){
+            return cache[value];
+        }
+        else{
+            let result = 10+value;
+            cache[value] = result;
+            return result;
+        }
+    }
+}
+
+let addition = memoAddition();
+console.log(addition(10));
+
+21- What is Hoisting?
+ Hoisting is a JavaScript mechanism where variables, function declarations and classes are moved to the top of their scope before code execution. Remember that JavaScript only hoists declarations, not initialisation. Let's take a simple example of variable hoisting,
+
+ console.log(message); //output : undefined
+var message = "The variable Has been hoisted";
+
+The above code looks like as below to the interpreter,
+
+var message;
+console.log(message);
+message = "The variable Has been hoisted";
+
+
+In the same fashion, function declarations are hoisted too
+
+message("Good morning"); //Good morning
+
+function message(name) {
+  console.log(name);
+}
+This hoisting makes functions to be safely used in code before they are declared.
+
+22-closure?
+
+A closure is the combination of a function and the lexical environment within which that function was declared. i.e, It is an inner function that has access to the outer or enclosing function’s variables. The closure has three scope chains
+
+1 Own scope where variables defined between its curly brackets.
+2 Outer function’s variables.
+3 Global variables.
+
+var closureExam = (name) =>{
+
+   var  getInfo = (message) =>{
+        console.log(message+ " " + name);
+    }
+    return getInfo;
+}
+
+var callClosure = closureExam("Anuj");
+
+console.log(callClosure("Hello"));
+console.log(callClosure("Hi"));
+
+23-What are modules?
+
+ Modules refer to small units of independent, reusable code and also act as the foundation of many JavaScript design patterns. Most of the JavaScript modules export an object literal, a function, or a constructor
+
+ 24-needs of module.
+  Why do you need modules
+  Below are the list of benefits using modules in javascript ecosystem
+
+    Maintainability
+    Reusability
+    Namespacing
+
+25-What is scope in javascript?
+   
+   Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. In other words, scope determines the visibility of variables and other resources in areas of your code.

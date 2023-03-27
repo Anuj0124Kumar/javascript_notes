@@ -152,14 +152,124 @@
 
 //currying -----------------------
 
-const multiArgFunction = (a, b, c) => a + b + c;
-console.log(multiArgFunction(1, 2, 3)); // 6
+// const multiArgFunction = (a, b, c) => a + b + c;
+// console.log(multiArgFunction(1, 2, 3)); // 6
 
-const curryUnaryFunction = (a) => (b) => (c) => a + b + c;
-curryUnaryFunction(1); // returns a function: b => c =>  1 + b + c
-curryUnaryFunction(1)(2); // returns a function: c => 3 + c
-curryUnaryFunction(1)(2)(3); // returns the number 6
+// const curryUnaryFunction = (a) => (b) => (c) => a + b + c;
+// curryUnaryFunction(1); // returns a function: b => c =>  1 + b + c
+// curryUnaryFunction(1)(2); // returns a function: c => 3 + c
+// curryUnaryFunction(1)(2)(3); // returns the number 6
+
+
+// const pureFunc = (x) =>{
+//     return x+2;
+// }
+
+// const result = pureFunc(10);
+// console.log(result);
+
+
+// let x=20;
+
+// const impureFunc =() =>{
+//    console.log(x);
+//    x+=2;
+// }
+
+// impureFunc();
+// impureFunc();
+// impureFunc();
+// impureFunc();
+
+//--------let------------------
+
+// let age = 30;
+
+// function printAge (){
+//     let age = 32;// block scope
+//     console.log(age);
+// }
+
+// printAge();
+// console.log(age);
+
+
+//----------switch-----------
+
+// with error due to same scope
+
+// function switchState(x) {
+
+//     switch(x){
+//         case 0:
+//          let name;
+//          break;
+
+//         case 1:
+//             let name;
+//             break; 
+//     }
+// }
+// // Without error 
+// function switchState(x) {
+
+//     switch(x){
+//         case 0:
+//          {
+//             let name;
+//            break;
+//          }
+
+//         case 1:
+//             let name;
+//             break; 
+//     }
+// }
+
+
+//TDZ
+
+// console.log(age);//UND
+// console.log(time);//Cannot access 'time' before initialization
+
+// var age = 26;
+// let time = 36;
+
+
+// const memoAddition = () =>{
+   
+//     let cache = {};
+     
+//     return (value) =>{
+//         if(value in cache){
+//             return cache[value];
+//         }
+//         else{
+//             let result = 10+value;
+//             cache[value] = result;
+//             return result;
+//         }
+//     }
+// }
+
+// let addition = memoAddition();
+// console.log(addition(10));
+
+
+//-------closure-------
 
 
 
+// var closureExam = (name) =>{
+
+//    var  getInfo = (message) =>{
+//         console.log(message+ " " + name);
+//     }
+//     return getInfo;
+// }
+
+// var callClosure = closureExam("Anuj");
+
+// console.log(callClosure("Hello"));
+// console.log(callClosure("Hi"));
 
