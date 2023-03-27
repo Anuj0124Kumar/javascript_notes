@@ -1,4 +1,3 @@
- # javascript_notes
 
 
 1-------- Call Apply Bind---------
