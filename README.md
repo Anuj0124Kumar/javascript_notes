@@ -497,16 +497,18 @@ localStorage.getItem("logo");
   
   const promise = new Promise(function(resolve,reject){
     setTimeout(()=>resolve(1),1000);
-    }).then(function( result){
-        console.log(result);
-        return result*2;
-    }).then(function(result){
-        console.log(result);
-        return result*3;
-    }).then(function(result){
-        console.log(result);
-        return 4*result;
-    })
+}).then(function( result){
+    console.log(result);
+    return result*2;
+}).then(function(result){
+    console.log(result);
+    return result*3;
+}).then(function(result){
+    console.log(result);
+    return 4*result;
+})
+
+promise.then((value)=>console.log(value));
 
     promise.then((value)=>console.log(value));
 
