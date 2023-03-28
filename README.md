@@ -419,3 +419,168 @@ console.log(callClosure("Hi"));
 25-What is scope in javascript?
    
    Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. In other words, scope determines the visibility of variables and other resources in areas of your code.
+
+26-How do you access web storage?
+The Window object implements the WindowLocalStorage and WindowSessionStorage objects which has localStorage(window.localStorage) and sessionStorage(window.sessionStorage) properties respectively. These properties create an instance of the Storage object, through which data items can be set, retrieved and removed for a specific domain and storage type (session or local). For example, you can read and write on local storage objects as below.
+
+localStorage.setItem("logo", document.getElementById("logo").value);
+localStorage.getItem("logo");
+
+27-What are the methods available on session storage?
+
+    The session storage provided methods for reading, writing and clearing the session data
+
+        // Save data to sessionStorage
+    sessionStorage.setItem("key", "value");
+
+    // Get saved data from sessionStorage
+    let data = sessionStorage.getItem("key");
+
+    // Remove saved data from sessionStorage
+    sessionStorage.removeItem("key");
+
+    // Remove all saved data from sessionStorage
+    sessionStorage.clear();
+
+28-What is a storage event and its event handler?
+
+    The StorageEvent is an event that fires when a storage area has been changed in the context of another document. Whereas onstorage property is an EventHandler for processing storage events. The syntax would be as below.
+
+    window.onstorage = functionRef;
+
+    window.onstorage = function (e) {
+        console.log(
+            "The " +
+            e.key +
+            " key has been changed from " +
+            e.oldValue +
+            " to " +
+            e.newValue +
+            "."
+     );
+   };
+
+   29-Why do you need web storage?
+      Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance. Also, the information is never transferred to the server. Hence this is a more recommended approach than Cookies.
+
+    30-How do you check web storage browser support?
+
+       if (typeof Storage !== "undefined") {
+        // Code for localStorage/sessionStorage.
+        } else {
+        // Sorry! No Web Storage support..
+    }
+
+    31-How do you check web workers browser support?
+
+       if (typeof Worker !== "undefined") {
+        // code for Web worker support.
+        } else {
+        // Sorry! No Web Worker support..
+        }
+
+    32-What is a promise?
+
+    A promise is an object that may produce a single value some time in the future with either a resolved value or a reason that it’s not resolved(for example, network error). It will be in one of the 3 possible states: fulfilled, rejected, or pending.
+
+
+    const promise = new Promise(
+    (resolve)=>{
+        setTimeout(()=>{
+            resolve("resolve");
+        },4000)
+    },
+    (reject)=>{}
+)
+
+33- promise chaining.
+  
+  const promise = new Promise(function(resolve,reject){
+    setTimeout(()=>resolve(1),1000);
+    }).then(function( result){
+        console.log(result);
+        return result*2;
+    }).then(function(result){
+        console.log(result);
+        return result*3;
+    }).then(function(result){
+        console.log(result);
+        return 4*result;
+    })
+
+    promise.then((value)=>console.log(value));
+
+promise.then((value)=>console.log(value));
+
+33- what is callback function?
+
+   A callback function is a function passed into another function as an argument. This function is invoked inside the outer function to complete an action. Let's take a simple example of how to use callback function
+
+
+  function innerCallBack(name){
+       console.log("Hello"+" "+name);
+       document.write("Hello World!"+" "+name);
+    }
+
+  function callBackfunc(backcall){
+      let name = prompt("please enter your name");
+       backcall(name);
+   }
+
+   callBackfunc(innerCallBack);
+
+
+   34-Why do we need callbacks?
+
+   The callbacks are needed because javascript is an event driven language. That means instead of waiting for a response javascript will keep executing while listening for other events. Let's take an example with the first function invoking an API call(simulated by setTimeout) and the next function which logs the message.
+
+   function firstFunction() {
+  // Simulate a code delay
+        setTimeout(function () {
+            console.log("First function called");
+        }, 1000);
+        }
+        function secondFunction() {
+        console.log("Second function called");
+        }
+        firstFunction();
+        secondFunction();
+
+        Output;
+        // Second function called
+        // First function called
+
+        As observed from the output, javascript didn't wait for the response of the first function and the remaining code block got executed. So callbacks are used in a way to make sure that certain code doesn’t execute until the other code finishes execution.
+
+        35-What is a callback hell
+
+        Callback Hell is an anti-pattern with multiple nested callbacks which makes code hard to read and debug when dealing with asynchronous logic. The callback hell looks like below,
+
+        async1(function(){
+            async2(function(){
+                async3(function(){
+                    async4(function(){
+                        ....
+                    });
+                });
+            });
+        });
+
+        36-How do you receive server-sent event notifications
+
+        The EventSource object is used to receive server-sent event notifications. For example, you can receive messages from server as below,
+
+        if (typeof EventSource !== "undefined") {
+            var source = new EventSource("sse_generator.js");
+            source.onmessage = function (event) {
+                document.getElementById("output").innerHTML += event.data + "<br>";
+            };
+         }
+
+         37-How do you check browser support for server-sent events
+
+         if (typeof EventSource !== "undefined") {
+            // Server-sent events supported. Let's have some code here!
+            } else {
+            // No server-sent events supported
+            }

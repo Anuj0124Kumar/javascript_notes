@@ -273,3 +273,45 @@
 // console.log(callClosure("Hello"));
 // console.log(callClosure("Hi"));
 
+//    promise = new Promise(
+//     (resolve)=>{
+//         setTimeout(()=>{
+//             resolve(" i am resolve");
+//         })
+//     },
+//     (reject)=>{}
+//    )
+
+//    promise.then((value)=>console.log(value));
+
+
+
+// callBack func
+//   function innerCallBack(name){
+//        console.log("Hello"+" "+name);
+//        document.write("Hello World!"+" "+name);
+//     }
+
+//   function callBackfunc(backcall){
+//       let name = prompt("please enter your name");
+//        backcall(name);
+//    }
+
+
+//   callBackfunc(innerCallBack);
+
+
+const promise = new Promise(function(resolve,reject){
+    setTimeout(()=>resolve(1),1000);
+}).then(function( result){
+    console.log(result);
+    return result*2;
+}).then(function(result){
+    console.log(result);
+    return result*3;
+}).then(function(result){
+    console.log(result);
+    return 4*result;
+})
+
+promise.then((value)=>console.log(value));
