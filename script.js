@@ -301,17 +301,49 @@
 //   callBackfunc(innerCallBack);
 
 
-const promise = new Promise(function(resolve,reject){
-    setTimeout(()=>resolve(1),1000);
-}).then(function( result){
-    console.log(result);
-    return result*2;
-}).then(function(result){
-    console.log(result);
-    return result*3;
-}).then(function(result){
-    console.log(result);
-    return 4*result;
-})
+// const promise = new Promise(function(resolve,reject){
+//     setTimeout(()=>resolve(1),1000);
+// }).then(function( result){
+//     console.log(result);
+//     return result*2;
+// }).then(function(result){
+//     console.log(result);
+//     return result*3;
+// }).then(function(result){
+//     console.log(result);
+//     return 4*result;
+// })
 
-promise.then((value)=>console.log(value));
+// promise.then((value)=>console.log(value));
+
+
+// const Promise1 = new Promise(function(resolve,reject){
+//     setTimeout(() => {
+//         return resolve ("first");
+//     }, 500);
+// })
+//  const Promise2 = new Promise(function (resolve,reject){
+//     setTimeout(() => {
+//         return resolve ("two");
+//     }, 100);
+//  })
+
+// Promise.race([Promise1,Promise2]).then(function(value){
+//     console.log(value);
+// })
+
+
+     
+// without strict it will not give any type of error
+    //  x=30;
+    //  console.log(x);
+
+    //  // with strict
+
+    //  "use strict"
+    //   y= 30;
+
+    // console.log(y);
+
+// eval operator
+    console.log(eval("19+10"));

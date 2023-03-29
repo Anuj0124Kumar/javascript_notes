@@ -586,3 +586,141 @@ promise.then((value)=>console.log(value));
             } else {
             // No server-sent events supported
             }
+
+    37.-What is promise.all?
+       
+       Promise.all is a promise that takes an array of promises as an input (an iterable), and it gets resolved when all the promises get resolved or any one of them gets rejected. For example, the syntax of promise.all method is below,
+
+       Example-
+
+       Promise.all([Promise1, Promise2, Promise3]) .then(result) => {   console.log(result) }) .catch(error => console.log(`Error in promises ${error}`));
+
+
+    38-What is the purpose of the race method in promise?
+      
+      const Promise1 = new Promise(function(resolve,reject){
+    setTimeout(() => {
+        return resolve ("first");
+    }, 500);
+        })
+        const Promise2 = new Promise(function (resolve,reject){
+            setTimeout(() => {
+                return resolve ("two");
+            }, 100);
+        })
+
+        Promise.race([Promise1,Promise2]).then(function(value){
+            console.log(value);
+        })
+
+
+     39-What is a strict mode in javascript?
+
+        Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a “strict” operating context. This way it prevents certain actions from being taken and throws more exceptions. The literal expression "use strict"; instructs the browser to use the javascript code in the Strict mode.
+
+
+        without strict it will not give any type of error
+            x=30;
+            console.log(x);
+
+            // with strict
+
+            "use strict"
+            y= 30;
+
+            console.log(y);
+
+    40-What is the purpose of double exclamation?
+
+      The double exclamation or negation(!!) ensures the resulting type is a boolean. If it was falsey (e.g. 0, null, undefined, etc.), it will be false, otherwise, it will be true. For example, you can test IE version using this expression as below,
+
+      let isIE8 = false;
+        isIE8 = !!navigator.userAgent.match(/MSIE 8.0/);
+        console.log(isIE8); // returns true or false
+
+      Note: The expression !! is not an operator, but it is just twice of ! operator.
+
+      41-What is the purpose of the delete operator?
+
+        var user = { name: "John", age: 20 };
+        delete user.age;
+
+        console.log(user); // {name: "John"}
+
+    41-What is typeof operator?
+
+        typeof "John Abraham"; // Returns "string"
+        typeof (1 + 2); // Returns "number"
+        typeof [1, 2, 3] // Returns "object" because all arrays are also objects
+
+   42- What is undefined property?
+
+      The undefined property indicates that a variable has not been assigned a value, or declared but not initialized at all. The type of undefined value is undefined too.
+
+      var user; // Value is undefined, type is undefined
+      console.log(typeof user); //undefined
+
+
+      var user; // Value is undefined, type is undefined
+      console.log(typeof user); //undefined
+
+
+      user = undefined;
+
+      43-What is null value?
+
+       The value null represents the intentional absence of any object value. It is one of JavaScript's primitive values. The type of null value is object. You can empty the variable by setting the value to null.
+
+        var user = null;
+        console.log(typeof user); //object
+
+    44-What is eval?
+
+      console.log(eval("19+10"));
+
+    45-How do you access history in javascript?
+
+       The window.history object contains the browser's history. You can load previous and next URLs in the history using back() and next() methods.
+
+       function goBack() {
+        window.history.back();
+        }
+        function goForward() {
+        window.history.forward();
+        }
+
+    Note: You can also access history without window prefix.
+
+
+    46-How do you detect caps lock key turned on or not?
+
+       The mouseEvent getModifierState() is used to return a boolean value that indicates whether the specified modifier key is activated or not. The modifiers such as CapsLock, ScrollLock and NumLock are activated when they are clicked, and deactivated when they are clicked again.
+
+        Let's take an input element to detect the CapsLock on/off behavior with an example,
+
+
+        <input type="password" onmousedown="enterInput(event)" />
+
+                <p id="feedback"></p>
+
+                <script>
+                function enterInput(e) {
+                    var flag = e.getModifierState("CapsLock");
+                    if (flag) {
+                    document.getElementById("feedback").innerHTML = "CapsLock activated";
+                    } else {
+                    document.getElementById("feedback").innerHTML =
+                        "CapsLock not activated";
+                    }
+                }
+                </script>
+
+
+        47-What is isNaN?
+
+         The isNaN() function is used to determine whether a value is an illegal number (Not-a-Number) or not. i.e, This function returns true if the value equates to NaN. Otherwise it returns false.
+
+        isNaN("Hello"); //true
+        isNaN("100"); //false
+
+
